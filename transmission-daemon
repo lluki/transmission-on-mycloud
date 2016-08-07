@@ -28,7 +28,6 @@
 # by default, this is set to 'transmission'.
 # For the sake of security you shouldn't set a password
 # on this user
-USERNAME=root
 
 
 # ----- *ADVANCED* CONFIGURATION -----
@@ -78,10 +77,6 @@ do_start()
           export TRANSMISSION_WEB_HOME
     fi
 
-    # Return
-    #   0 if daemon has been started
-    #   1 if daemon was already running
-    #   2 if daemon could not be started
     transmission-daemon --pid-file $PIDFILE $TRANSMISSION_ARGS || return 0
 }
 
@@ -90,11 +85,6 @@ do_start()
 #
 do_stop()
 {
-        # Return
-        #   0 if daemon has been stopped
-        #   1 if daemon was already stopped
-        #   2 if daemon could not be stopped
-        #   other if a failure occurred
         kill -TERM `cat $PIDFILE`
 }
 
